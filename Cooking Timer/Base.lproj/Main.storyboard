@@ -25,7 +25,7 @@
                                     <navigationItem title="Cooking Timer" id="2BY-WV-222">
                                         <barButtonItem key="leftBarButtonItem" systemItem="pause" id="8GH-Va-5Ri">
                                             <connections>
-                                                <action selector="onStopPressed:" destination="BYZ-38-t0r" id="Xdo-21-IDa"/>
+                                                <action selector="onPausePressed:" destination="BYZ-38-t0r" id="Xdo-21-IDa"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" systemItem="play" id="AC4-z9-og2">
@@ -51,7 +51,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="timeOutput" destination="vnF-Af-gNG" id="T48-CS-wcw"/>
+                        <outlet property="timeOutputLabel" destination="vnF-Af-gNG" id="T48-CS-wcw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

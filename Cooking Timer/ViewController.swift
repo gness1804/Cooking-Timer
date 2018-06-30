@@ -15,11 +15,11 @@ class ViewController: UIViewController {
     var seconds = 60
     var isTimerRunning = false
     
-    @IBOutlet weak var timeOutput: UILabel!
+    @IBOutlet weak var timeOutputLabel: UILabel!
     
     @objc func onTimeElapsed() {
         seconds -= 1
-        timeOutput.text = String(seconds)
+        timeOutputLabel.text = String(seconds)
         print(seconds)
     }
     
@@ -27,8 +27,8 @@ class ViewController: UIViewController {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(ViewController.onTimeElapsed)), userInfo: nil, repeats: true)
     }
     
-    @IBAction func onStopPressed(_ sender: Any) {
-        print("Timer stopped.")
+    @IBAction func onPausePressed(_ sender: Any) {
+        timer.invalidate()
     }
     
     @IBAction func onStartPressed(_ sender: Any) {
