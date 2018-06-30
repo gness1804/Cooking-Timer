@@ -12,15 +12,27 @@ import UIKit
 
 class ViewController: UIViewController {
     var timer = Timer()
-    var seconds = 60
+    var seconds = 10
     var isTimerRunning = false
     
     @IBOutlet weak var timeOutputLabel: UILabel!
     
+    func timesUp()  {
+        timeOutputLabel.text = "Time's Up!!"
+    }
+    
+    func resetTime()  {
+        timer.invalidate()
+        seconds = 10
+    }
+    
     @objc func onTimeElapsed() {
         seconds -= 1
         timeOutputLabel.text = String(seconds)
-        print(seconds)
+        if seconds == 0 {
+            timesUp()
+            resetTime()
+        }
     }
     
     func runTimer() {
