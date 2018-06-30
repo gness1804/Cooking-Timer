@@ -36,6 +36,7 @@ class ViewController: UIViewController {
     
     func timesUp()  {
         timeOutputLabel.text = "Time's Up!!"
+        // do the alert here
     }
     
     func resetTime()  {
@@ -49,7 +50,7 @@ class ViewController: UIViewController {
     @objc func onTimeElapsed() {
         seconds -= 1
         displayTime()
-        if seconds == 0 {
+        if seconds < 1 {
             resetTime()
             timesUp()
         }
