@@ -12,8 +12,9 @@ import UIKit
 
 class ViewController: UIViewController {
     var timer = Timer()
-    var seconds = 60
+    var seconds = 10
     var isTimerRunning = false
+    var isPaused = false
     
     @IBAction func addNewTimer(_ sender: Any) {
         print("Added new timer.")
@@ -39,8 +40,9 @@ class ViewController: UIViewController {
     
     func resetTime()  {
         timer.invalidate()
-        seconds = 60
+        seconds = 10
         displayTime()
+        isTimerRunning = false
     }
     
     @objc func onTimeElapsed() {
@@ -54,14 +56,23 @@ class ViewController: UIViewController {
     
     func runTimer() {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(ViewController.onTimeElapsed)), userInfo: nil, repeats: true)
+        isTimerRunning = true
     }
     
     @IBAction func onPausePressed(_ sender: Any) {
-        timer.invalidate()
+        if !isPaused {
+            timer.invalidate()
+            isPaused = true
+        } else {
+            runTimer()
+            isPaused = false
+        }
     }
     
     @IBAction func onStartPressed(_ sender: Any) {
-        runTimer()
+        if !isTimerRunning {
+            runTimer()
+        }
     }
     
     override func viewDidLoad() {
