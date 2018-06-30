@@ -12,7 +12,7 @@ import UIKit
 
 class ViewController: UIViewController {
     var timer = Timer()
-    var seconds = 10
+    var seconds = 60
     var isTimerRunning = false
     
     @IBAction func addNewTimer(_ sender: Any) {
@@ -21,8 +21,16 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var timeOutputLabel: UILabel!
     
+    func convertTimeToString(time: TimeInterval) -> String {
+        let hours = Int(time) / 3600
+        let minutes = Int(time) / 60 % 60
+        let _seconds = Int(time) % 60
+        
+        return "\(hours): \(minutes): \(_seconds)"
+    }
+    
     func displayTime()  {
-        timeOutputLabel.text = String(seconds)
+        timeOutputLabel.text = convertTimeToString(time: TimeInterval(seconds))
     }
     
     func timesUp()  {
@@ -31,7 +39,7 @@ class ViewController: UIViewController {
     
     func resetTime()  {
         timer.invalidate()
-        seconds = 10
+        seconds = 60
         displayTime()
     }
     
