@@ -30,7 +30,7 @@
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" systemItem="play" id="AC4-z9-og2">
                                             <connections>
-                                                <action selector="startTimer:" destination="BYZ-38-t0r" id="q0d-sw-Q8y"/>
+                                                <action selector="onStartPressed:" destination="BYZ-38-t0r" id="q0d-sw-Q8y"/>
                                             </connections>
                                         </barButtonItem>
                                     </navigationItem>
