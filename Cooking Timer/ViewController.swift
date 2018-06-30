@@ -14,6 +14,10 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var timeOutput: UILabel!
     
+    @IBAction func startTimer(_ sender: Any) {
+        print("Timer started.")
+    }
+    
     @IBAction func onStopPressed(_ sender: Any) {
         timer.invalidate()
         print("Timer stopped.")
