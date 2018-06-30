@@ -51,6 +51,12 @@
                                             <action selector="addNewTimer:" destination="BYZ-38-t0r" id="pvk-BJ-dBS"/>
                                         </connections>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="oeL-xX-aUH"/>
+                                    <barButtonItem systemItem="refresh" id="Vfi-GG-gMc">
+                                        <connections>
+                                            <action selector="onResetPressed:" destination="BYZ-38-t0r" id="GX6-i4-j0v"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                         </subviews>

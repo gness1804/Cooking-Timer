@@ -21,6 +21,10 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var timeOutputLabel: UILabel!
     
+    func displayTime()  {
+        timeOutputLabel.text = String(seconds)
+    }
+    
     func timesUp()  {
         timeOutputLabel.text = "Time's Up!!"
     }
@@ -28,14 +32,15 @@ class ViewController: UIViewController {
     func resetTime()  {
         timer.invalidate()
         seconds = 10
+        displayTime()
     }
     
     @objc func onTimeElapsed() {
         seconds -= 1
-        timeOutputLabel.text = String(seconds)
+        displayTime()
         if seconds == 0 {
-            timesUp()
             resetTime()
+            timesUp()
         }
     }
     
@@ -54,7 +59,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
+    @IBAction func onResetPressed(_ sender: Any) {
+        resetTime()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
