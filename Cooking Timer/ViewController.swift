@@ -12,6 +12,8 @@ class ViewController: UIViewController {
     var timer = Timer()
     var seconds = 60
     
+    @IBOutlet weak var timeOutput: UILabel!
+    
     @IBAction func onStopPressed(_ sender: Any) {
         timer.invalidate()
         print("Timer stopped.")
@@ -19,6 +21,7 @@ class ViewController: UIViewController {
     
     @objc func onTimeElapsed() {
         seconds -= 1
+        timeOutput.text = String(seconds)
         print(seconds)
     }
     
@@ -27,6 +30,8 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ViewController.onTimeElapsed), userInfo: nil, repeats: true)
+        
+        timeOutput.text = String(seconds)
     }
 
     override func didReceiveMemoryWarning() {
