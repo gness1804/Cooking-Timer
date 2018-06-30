@@ -10,22 +10,23 @@ import UIKit
 
 class ViewController: UIViewController {
     var timer = Timer()
-    
+    var seconds = 60
     
     @IBAction func onStopPressed(_ sender: Any) {
         timer.invalidate()
         print("Timer stopped.")
     }
     
-    @objc func handleTimer() {
-        print("Timer ran.")
+    @objc func onTimeElapsed() {
+        seconds -= 1
+        print(seconds)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ViewController.handleTimer), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(ViewController.onTimeElapsed), userInfo: nil, repeats: true)
     }
 
     override func didReceiveMemoryWarning() {
