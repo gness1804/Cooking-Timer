@@ -43,6 +43,7 @@ class ViewController: UIViewController {
         seconds = 10
         displayTime()
         isTimerRunning = false
+        isPaused = false
     }
     
     @objc func onTimeElapsed() {
