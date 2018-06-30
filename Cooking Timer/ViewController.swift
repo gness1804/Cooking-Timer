@@ -15,6 +15,10 @@ class ViewController: UIViewController {
     var seconds = 10
     var isTimerRunning = false
     
+    @IBAction func addNewTimer(_ sender: Any) {
+        print("Added new timer.")
+    }
+    
     @IBOutlet weak var timeOutputLabel: UILabel!
     
     func timesUp()  {
