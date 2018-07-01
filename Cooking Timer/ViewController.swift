@@ -17,8 +17,26 @@ class ViewController: UIViewController {
     var isTimerRunning = false
     var isPaused = false
     
+    func alertTimeInput() {
+        let alert = UIAlertController(title: "How Many Minutes", message: "Please enter a number of minutes", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        alert.addTextField(configurationHandler: { textField in
+            textField.placeholder = "The time..."
+        })
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+            action in
+            if alert.textFields?.first?.text != "" {
+                print(alert.textFields?.first?.text ?? "No number given.")
+            }
+        }))
+        
+        self.present(alert, animated: true)
+    }
+    
     @IBAction func addNewTimer(_ sender: Any) {
-        print("Added new timer.")
+        alertTimeInput()
     }
     
     @IBOutlet weak var timeOutputLabel: UILabel!
