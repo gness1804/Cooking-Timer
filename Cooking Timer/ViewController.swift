@@ -17,11 +17,27 @@ class ViewController: UIViewController {
     var isTimerRunning = false
     var isPaused = false
     
+    func restoreDefaultTime() {
+        seconds = 60
+        resetTime()
+    }
+    
+    @IBAction func onDefaultButtonPress(_ sender: Any) {
+        let alert = UIAlertController(title: "Restore Defaults?", message: "Do you want to restore the default time of 1 minute?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "No", style: .cancel, handler: nil))
+       alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: {
+        action in
+        self.restoreDefaultTime()
+       }))
+        self.present(alert, animated: true)
+    }
+    
     func assignNewTime(time: String)  {
         var _time = 0
         if Int(time) != nil {
             _time = Int(time)!
             seconds = _time * 60
+            // add this "seconds" value to local storage, overriding the prior value
             resetTime()
         } else {
             let alert = UIAlertController(title: "Oops!", message: "Error: Please enter a valid positive whole number.", preferredStyle: .alert)
@@ -82,6 +98,7 @@ class ViewController: UIViewController {
     func resetTime()  {
         timer.invalidate()
 //        seconds = 60
+        // retrieve last time value from local storage
         displayTime()
         isTimerRunning = false
         isPaused = false
@@ -119,6 +136,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // save 60 seconds to local storage if no preexisting value; else, load that value from local storage
     }
     
     @IBAction func onResetPressed(_ sender: Any) {

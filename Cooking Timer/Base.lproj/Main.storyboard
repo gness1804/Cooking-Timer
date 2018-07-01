@@ -52,6 +52,12 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="oeL-xX-aUH"/>
+                                    <barButtonItem title="Default" id="k5L-XE-g8B">
+                                        <connections>
+                                            <action selector="onDefaultButtonPress:" destination="BYZ-38-t0r" id="koM-uo-atn"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="FPe-va-AjG"/>
                                     <barButtonItem systemItem="refresh" id="Vfi-GG-gMc">
                                         <connections>
                                             <action selector="onResetPressed:" destination="BYZ-38-t0r" id="GX6-i4-j0v"/>
