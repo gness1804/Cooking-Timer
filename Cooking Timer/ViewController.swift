@@ -22,7 +22,7 @@ class ViewController: UIViewController {
         if Int(time) != nil {
             _time = Int(time)!
             seconds = _time * 60
-            runTimer()
+            resetTime()
         } else {
             let alert = UIAlertController(title: "Oops!", message: "Error: Please enter a valid positive whole number.", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
@@ -81,7 +81,7 @@ class ViewController: UIViewController {
     
     func resetTime()  {
         timer.invalidate()
-        seconds = 60
+//        seconds = 60
         displayTime()
         isTimerRunning = false
         isPaused = false
