@@ -30,13 +30,19 @@ class ViewController: UIViewController {
         return "\(hours): \(minutes): \(_seconds)"
     }
     
+    func notifyTimesUp() {
+        let alert = UIAlertController(title: "Time's Up!", message: "Click OK to start over.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        self.present(alert, animated: true)
+    }
+    
     func displayTime()  {
         timeOutputLabel.text = convertTimeToString(time: TimeInterval(seconds))
     }
     
     func timesUp()  {
         timeOutputLabel.text = "Time's Up!!"
-        // do the alert here
+        notifyTimesUp()
     }
     
     func resetTime()  {
