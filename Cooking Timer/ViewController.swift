@@ -13,7 +13,7 @@ import UIKit
 
 class ViewController: UIViewController {
     var timer = Timer()
-    var seconds = 10
+    var seconds = 60
     var isTimerRunning = false
     var isPaused = false
     
@@ -81,7 +81,7 @@ class ViewController: UIViewController {
     
     func resetTime()  {
         timer.invalidate()
-        seconds = 10
+        seconds = 60
         displayTime()
         isTimerRunning = false
         isPaused = false
