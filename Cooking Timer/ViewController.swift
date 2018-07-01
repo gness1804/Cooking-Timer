@@ -19,6 +19,7 @@ class ViewController: UIViewController {
     
     func restoreDefaultTime() {
         seconds = 60
+        UserDefaults.standard.set(String(seconds), forKey: "cookingTimerTime")
         resetTime()
     }
     
@@ -37,7 +38,7 @@ class ViewController: UIViewController {
         if Int(time) != nil {
             _time = Int(time)!
             seconds = _time * 60
-            // add this "seconds" value to local storage, overriding the prior value
+            UserDefaults.standard.set(String(seconds), forKey: "cookingTimerTime")
             resetTime()
         } else {
             let alert = UIAlertController(title: "Oops!", message: "Error: Please enter a valid positive whole number.", preferredStyle: .alert)
@@ -97,8 +98,11 @@ class ViewController: UIViewController {
     
     func resetTime()  {
         timer.invalidate()
-//        seconds = 60
-        // retrieve last time value from local storage
+        if UserDefaults.standard.string(forKey: "cookingTimerTime") != nil {
+            seconds = Int(UserDefaults.standard.string(forKey: "cookingTimerTime")!)!
+        } else {
+            seconds = 60
+        }
         displayTime()
         isTimerRunning = false
         isPaused = false
@@ -136,7 +140,14 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // save 60 seconds to local storage if no preexisting value; else, load that value from local storage
+        if UserDefaults.standard.string(forKey: "cookingTimerTime") != nil {
+            print("inside conditional in viewDidLoad.")
+            let val = UserDefaults.standard.string(forKey: "cookingTimerTime")
+            seconds = Int(val!)!
+            print("\(seconds) in viewDidLoad.")
+        } else {
+            UserDefaults.standard.set("60", forKey: "cookingTimerTime")
+        }
     }
     
     @IBAction func onResetPressed(_ sender: Any) {
