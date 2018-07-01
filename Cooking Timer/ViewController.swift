@@ -8,6 +8,7 @@
 
 // thanks to Jen Sipila's "Build a count down timer with Swift 3.0" tutorial, https://medium.com/ios-os-x-development/build-an-stopwatch-with-swift-3-0-c7040818a10f
 // and to https://learnappmaking.com/uialertcontroller-alerts-swift-how-to/
+// and to this: https://medium.com/aviabird/the-one-with-userdefaults-aab2c2a7e170
 
 import UIKit
 
