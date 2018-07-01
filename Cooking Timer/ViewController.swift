@@ -33,7 +33,9 @@ class ViewController: UIViewController {
     
     func notifyTimesUp() {
         let alert = UIAlertController(title: "Time's Up!", message: "Click OK to start over.", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: { _ in
+            self.resetTime()
+        }))
         self.present(alert, animated: true)
     }
     
