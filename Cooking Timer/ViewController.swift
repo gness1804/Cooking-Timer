@@ -36,7 +36,7 @@ class ViewController: UIViewController {
     
     func assignNewTime(time: String)  {
         var _time = 0
-        if Int(time) != nil {
+        if Int(time) != nil && Int(time)! > 0 {
             _time = Int(time)!
             seconds = _time * 60
             UserDefaults.standard.set(String(seconds), forKey: "cookingTimerTime")
@@ -142,10 +142,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if UserDefaults.standard.string(forKey: "cookingTimerTime") != nil {
-            print("inside conditional in viewDidLoad.")
             let val = UserDefaults.standard.string(forKey: "cookingTimerTime")
             seconds = Int(val!)!
-            print("\(seconds) in viewDidLoad.")
         } else {
             UserDefaults.standard.set("60", forKey: "cookingTimerTime")
         }
