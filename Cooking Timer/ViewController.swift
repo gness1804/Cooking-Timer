@@ -17,6 +17,19 @@ class ViewController: UIViewController {
     var isTimerRunning = false
     var isPaused = false
     
+    func assignNewTime(time: String)  {
+        var _time = 0
+        if Int(time) != nil {
+            _time = Int(time)!
+            seconds = _time * 60
+            runTimer()
+        } else {
+            let alert = UIAlertController(title: "Oops!", message: "Error: Please enter a valid positive whole number.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+            self.present(alert, animated: true)
+        }
+    }
+    
     func alertTimeInput() {
         let alert = UIAlertController(title: "How Many Minutes", message: "Please enter a number of minutes", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
@@ -28,7 +41,7 @@ class ViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {
             action in
             if alert.textFields?.first?.text != "" {
-                print(alert.textFields?.first?.text ?? "No number given.")
+                self.assignNewTime(time: alert.textFields?.first?.text ?? "No number given.")
             }
         }))
         
